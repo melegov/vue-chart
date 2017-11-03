@@ -64,14 +64,10 @@ new Vue({
     created: function() {
         var self = this;
 
-        // данные я выгрузил из свагера в json, потому что кросдомменные запросы запрещены на сервере.
-        // надеюсь, что суть задачи я понял верно =)
-
         $.ajax({ url: '/data/regions.json', dataType: "json", success: function(data) {
             self.regions = data;
         }});
         $.ajax({ url: '/data/transactions.json', dataType: "json", success: function(data) {
-            // сортирую по id
             self.transactions = data.sort(function(a, b) { return a.id - b.id; });
         }});
     }
